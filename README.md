@@ -1,18 +1,39 @@
-# LLVM → LC2K (Week 1)
+# LLVM LC2K Backend
 
-A small LLVM 20.1.8 target using SelectionDAG, LLVM's register allocator, a
-course-format assembly emitter, and an independently tested Python assembler
-and simulator. This is a student backend for a declared leaf-kernel subset.
-Current test evidence and gate state are in
-[docs/STATUS.md](docs/STATUS.md). Week 2 synthesis/recipes are not implemented.
+## Overview
 
-Week 1 smoke and full acceptance both pass 20 groups. The full suite uses 1049
-runtime inputs per scalar/memory IR and C fixture, 1071 pressure cases and 35
-loop cases. Human contract/G1 review and independent second-host reproduction
-remain pending. See [results/week1/evidence.json](results/week1/evidence.json).
+This project adds LC2K as an experimental target in LLVM 20.1.8. It compiles a
+small, explicitly validated subset of LLVM IR into LC2K assembly using LLVM's
+real SelectionDAG instruction selector, virtual registers, register allocator,
+and spill/reload pipeline. The repository also includes a standalone assembler,
+simulator, execution wrapper, and end-to-end correctness tests.
 
-For a file-by-file explanation of the backend, build scripts, tests, and
-generated files, read [docs/FILE_GUIDE.md](docs/FILE_GUIDE.md).
+LC2K is a compact 32-bit teaching architecture with eight registers and a small
+instruction set built around ADD, NOR, loads/stores, branches, JALR, HALT, and
+NOOP. The backend focuses on understandable code generation and explicit
+failure for operations outside the supported subset.
+
+```text
+Restricted C ──► Clang ──► validated LLVM IR ──► LLVM LC2K backend
+                                                        │
+                                                        ▼
+                                              LC2K assembly
+                                                        │
+                                                        ▼
+                                          assembler + simulator
+```
+
+The current implementation supports leaf `i32` kernels with up to three
+arguments, modular addition, NOR/NOT, constants, EQ/NE branches, PHI nodes,
+simple loops, register spills, and aligned constant-index global memory.
+Unsupported operations are rejected with diagnostics instead of being silently
+lowered incorrectly. The C route is intentionally restricted and is not a
+general-purpose C compiler.
+
+Week 1 smoke and full acceptance pass 20 test groups. See
+[docs/SUPPORT.md](docs/SUPPORT.md) for the exact boundary,
+[docs/STATUS.md](docs/STATUS.md) for current evidence, and
+[docs/FILE_GUIDE.md](docs/FILE_GUIDE.md) for a file-by-file explanation.
 
 ## Build
 
