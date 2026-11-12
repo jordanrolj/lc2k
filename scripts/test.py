@@ -36,14 +36,14 @@ def main():
             manifest["failed"].append({"name": name, "error": str(e)})
             print(f"FAIL {name}: {e}", flush=True)
     def isa():
-        suite = unittest.defaultTestLoader.discover(str(ROOT / "tests/isa"))
+        suite = unittest.TestLoader().discover(str(ROOT / "tests/isa"))
         with (out / "isa.log").open("w") as log:
             result = unittest.TextTestRunner(stream=log, verbosity=2).run(suite)
         if not result.wasSuccessful() or not result.testsRun: raise AssertionError("see isa.log; suite must be nonempty")
         return f"{result.testsRun} tests"
     record("ISA", isa)
     def runner():
-        suite = unittest.defaultTestLoader.discover(str(ROOT / "tests/runner"))
+        suite = unittest.TestLoader().discover(str(ROOT / "tests/runner"))
         with (out / "runner.log").open("w") as log:
             result = unittest.TextTestRunner(stream=log, verbosity=2).run(suite)
         if not result.wasSuccessful() or not result.testsRun: raise AssertionError("see runner.log; suite must be nonempty")
