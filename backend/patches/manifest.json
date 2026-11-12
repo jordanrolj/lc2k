@@ -1,0 +1,6 @@
+{
+  "path": "llvm/tools/llc/llc.cpp",
+  "original_sha256": "751bfc43ea694f8e9db2e1a43e971ad2c4725ebb0b32071f6e22196114d1c71f",
+  "patched_sha256": "f24de97b23ef5292cfe4f743ac56017653575397582295c26b7b1a5b77c31c3b",
+  "anchor": "      InitializeOptions(TheTriple);\n"
+}

@@ -1,0 +1,73 @@
+{
+  "command": [
+    "python3",
+    "scripts/compile_c.py",
+    "tests/frontend/add.c",
+    "-o",
+    "build/demo/c-add.as"
+  ],
+  "exit_code": 0,
+  "pipeline": "build/demo/c-add.pipeline.json",
+  "runs": [
+    {
+      "command": [
+        "python3",
+        "scripts/run.py",
+        "build/demo/c-add.as",
+        "--args",
+        "5",
+        "7"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "halted",
+        "result_u32": 12,
+        "registers": [
+          0,
+          12,
+          7,
+          0,
+          16,
+          61440,
+          0,
+          6
+        ],
+        "dynamic_instructions": 11,
+        "loads": 5,
+        "stores": 0,
+        "static_instructions": 11,
+        "data_words": 5
+      }
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/run.py",
+        "build/demo/c-add.as",
+        "--args",
+        "4294967295",
+        "1"
+      ],
+      "exit_code": 0,
+      "result": {
+        "status": "halted",
+        "result_u32": 0,
+        "registers": [
+          0,
+          0,
+          1,
+          0,
+          16,
+          61440,
+          0,
+          6
+        ],
+        "dynamic_instructions": 11,
+        "loads": 5,
+        "stores": 0,
+        "static_instructions": 11,
+        "data_words": 5
+      }
+    }
+  ]
+}

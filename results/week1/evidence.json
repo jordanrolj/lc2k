@@ -1,0 +1,260 @@
+{
+  "session_date": "2026-11-10",
+  "privacy_note": "Machine-specific host details and interpreter paths are omitted or normalized for public release.",
+  "gate": "G1 implementation ready for human review; not human-approved DONE",
+  "llvm_pin": {
+    "repository": "https://github.com/llvm/llvm-project.git",
+    "tag": "llvmorg-20.1.8",
+    "commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+    "version": "20.1.8",
+    "archive_url": "https://codeload.github.com/llvm/llvm-project/tar.gz/87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+    "archive_sha256": "ccd2521c73309446f3811ec78e5702e92c5fdf259ec4a82b067f7121da29db05"
+  },
+  "checks": {
+    "smoke": {
+      "command": [
+        "python3",
+        "scripts/test.py",
+        "--suite",
+        "smoke"
+      ],
+      "exit_code": 0,
+      "passed_groups": 20,
+      "failed_groups": 0,
+      "unrun": [],
+      "evidence": "build/logs/test-20261111T045236.887059Z/manifest.json",
+      "manifest_sha256": "818c8c6242164a47097956731e2947fec1b9cad0d03ef4827e24f24e1b8931d0",
+      "details": [
+        {
+          "name": "ISA",
+          "detail": "19 tests"
+        },
+        {
+          "name": "wrapper",
+          "detail": "7 tests"
+        },
+        {
+          "name": "identity",
+          "detail": "149 runtime vectors"
+        },
+        {
+          "name": "add",
+          "detail": "149 runtime vectors"
+        },
+        {
+          "name": "nor",
+          "detail": "149 runtime vectors"
+        },
+        {
+          "name": "branch",
+          "detail": "149 runtime vectors"
+        },
+        {
+          "name": "branch-ne",
+          "detail": "149 runtime vectors"
+        },
+        {
+          "name": "memory",
+          "detail": "149 runtime vectors"
+        },
+        {
+          "name": "constants",
+          "detail": "7 bit-pattern edges"
+        },
+        {
+          "name": "output checker negative",
+          "detail": "wrong expected result rejected"
+        },
+        {
+          "name": "backend rejection",
+          "detail": "foreign triple/layout, multiply, bytes, and object output rejected"
+        },
+        {
+          "name": "register pressure",
+          "detail": "45 static spill stores, 45 reloads; 171 runtime vectors; wrong-spill negative detected; MIR saved"
+        },
+        {
+          "name": "loop",
+          "detail": "35 bounded runs, including zero/one/several iterations"
+        },
+        {
+          "name": "backend timeout negative",
+          "detail": "backend loop instruction-limit failure detected"
+        },
+        {
+          "name": "frontend validator",
+          "detail": "25 validator tests"
+        },
+        {
+          "name": "C identity",
+          "detail": "149 C runtime vectors"
+        },
+        {
+          "name": "C add",
+          "detail": "149 C runtime vectors"
+        },
+        {
+          "name": "C not",
+          "detail": "149 C runtime vectors"
+        },
+        {
+          "name": "C nor",
+          "detail": "149 C runtime vectors"
+        },
+        {
+          "name": "C globals",
+          "detail": "149 C runtime vectors"
+        }
+      ]
+    },
+    "full": {
+      "command": [
+        "python3",
+        "scripts/test.py",
+        "--suite",
+        "full"
+      ],
+      "exit_code": 0,
+      "passed_groups": 20,
+      "failed_groups": 0,
+      "unrun": [],
+      "evidence": "build/logs/test-20261111T045243.890030Z/manifest.json",
+      "manifest_sha256": "37e65f1e2c88f1e85a9382fcc96ae197d6e014bdc8418ff5c535524b464bf9ec",
+      "details": [
+        {
+          "name": "ISA",
+          "detail": "19 tests"
+        },
+        {
+          "name": "wrapper",
+          "detail": "7 tests"
+        },
+        {
+          "name": "identity",
+          "detail": "1049 runtime vectors"
+        },
+        {
+          "name": "add",
+          "detail": "1049 runtime vectors"
+        },
+        {
+          "name": "nor",
+          "detail": "1049 runtime vectors"
+        },
+        {
+          "name": "branch",
+          "detail": "1049 runtime vectors"
+        },
+        {
+          "name": "branch-ne",
+          "detail": "1049 runtime vectors"
+        },
+        {
+          "name": "memory",
+          "detail": "1049 runtime vectors"
+        },
+        {
+          "name": "constants",
+          "detail": "7 bit-pattern edges"
+        },
+        {
+          "name": "output checker negative",
+          "detail": "wrong expected result rejected"
+        },
+        {
+          "name": "backend rejection",
+          "detail": "foreign triple/layout, multiply, bytes, and object output rejected"
+        },
+        {
+          "name": "register pressure",
+          "detail": "45 static spill stores, 45 reloads; 1071 runtime vectors; wrong-spill negative detected; MIR saved"
+        },
+        {
+          "name": "loop",
+          "detail": "35 bounded runs, including zero/one/several iterations"
+        },
+        {
+          "name": "backend timeout negative",
+          "detail": "backend loop instruction-limit failure detected"
+        },
+        {
+          "name": "frontend validator",
+          "detail": "25 validator tests"
+        },
+        {
+          "name": "C identity",
+          "detail": "1049 C runtime vectors"
+        },
+        {
+          "name": "C add",
+          "detail": "1049 C runtime vectors"
+        },
+        {
+          "name": "C not",
+          "detail": "1049 C runtime vectors"
+        },
+        {
+          "name": "C nor",
+          "detail": "1049 C runtime vectors"
+        },
+        {
+          "name": "C globals",
+          "detail": "1049 C runtime vectors"
+        }
+      ]
+    }
+  },
+  "independent_spill_review": {
+    "pressure_assembly_sha256": "8574320fdde754106fdea2514cafb46b8af497f405fb939988a8c3f7b8ba9114",
+    "image_words": 360,
+    "global_address_first": 296,
+    "global_address_last": 359,
+    "frame_bytes": 56,
+    "stack_word_offsets": [
+      -14,
+      -13,
+      -12,
+      -11,
+      -10,
+      -9,
+      -8,
+      -7,
+      -6,
+      -5,
+      -4,
+      -3,
+      -2,
+      -1
+    ],
+    "stack_address_first": 61426,
+    "stack_address_last": 61439,
+    "static_spill_stores": 45,
+    "static_reload_loads": 45,
+    "runtime_steps": 291,
+    "runtime_total_loads": 114,
+    "runtime_total_stores": 45,
+    "runtime_result": 1878507519,
+    "independent_expected": 1878507519,
+    "runtime_pc": 7,
+    "post_pei_compile_exit": 0
+  },
+  "unrun": [
+    "independent second-host/clean-checkout reproduction",
+    "GitHub Actions execution (no remote published)",
+    "human ABI/contract/G1 review"
+  ],
+  "historical_failures": [
+    {
+      "reason": "negative constant used unsigned LLVM constant API; fixed",
+      "evidence": "build/logs/test-20261111T044007.523680Z/manifest.json"
+    },
+    {
+      "reason": "stock llc silently normalized foreign layout; guarded",
+      "evidence": "build/logs/input-boundary-before/result.json"
+    },
+    {
+      "reason": "strict C envelope initially mismatched pinned module flags/returned attribute/GEP flags; corrected from actual pinned source and output",
+      "evidence": "build/logs/test-20261111T045052.771844Z/manifest.json"
+    }
+  ]
+}

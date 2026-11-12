@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "llvm": {
+    "repository": "https://github.com/llvm/llvm-project.git",
+    "tag": "llvmorg-20.1.8",
+    "commit": "87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+    "version": "20.1.8",
+    "archive_url": "https://codeload.github.com/llvm/llvm-project/tar.gz/87f0227cb60147a26a1eeb4fb06e3b505e9c7261",
+    "archive_sha256": "ccd2521c73309446f3811ec78e5702e92c5fdf259ec4a82b067f7121da29db05"
+  },
+  "build": {
+    "configuration": "Release",
+    "assertions": true,
+    "default_jobs": 2,
+    "targets": ["LC2K"],
+    "projects": ["clang"]
+  },
+  "python": {
+    "minimum_version": "3.10",
+    "dependencies": []
+  }
+}

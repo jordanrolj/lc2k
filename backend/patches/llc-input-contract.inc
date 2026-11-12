@@ -1,0 +1,7 @@
+      // LC2K has a deliberately closed byte/word memory contract. Validate
+      // the original input envelope before llc replaces its data layout.
+      if (StringRef(TheTarget->getName()) == "lc2k" &&
+          (DataLayoutTargetTriple != "lc2k-unknown-none" ||
+           OldDLStr != "e-p:32:32-i32:32-n32-S32"))
+        reportError("LC2K unsupported IR: original triple/layout must match "
+                    "the declared LC2K input contract", InputFilename);
